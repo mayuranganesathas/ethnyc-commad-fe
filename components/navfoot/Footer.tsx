@@ -1,8 +1,6 @@
-import logoPng from "../../public/Logo_BONDFI.jpg";
 import { Container } from "@material-ui/core";
-// import ConnectWallet from "../ui/ConnectWallet";
 import React, { useEffect, useState } from "react";
-// import { useWalletAuth } from "../../lib/walletContext";
+import { useWalletAuth } from "../../lib/WalletContext";
 
 export const Footer = () => {
   return (
