@@ -13,25 +13,24 @@ const ConnectWalletButton = ({
   web3Provider,
 }: ConnectWalletProps) => {
   return (
+    // TODO : FIX COLORING
     <div>
       {web3Provider ? (
-        <Button
-          variant="outlined"
-          className="text-black border-black hover:bg-black hover:text-white	 hover:cursor-pointer"
+        <button
+          className="text-white border-textandcta bg-textandcta  p-4 text-lg rounded-full hover:bg-white hover:text-textandcta	 hover:cursor-pointer"
           onClick={() => disconnectWallet()}
         >
           {" "}
           Disconnect Wallet
-        </Button>
+        </button>
       ) : (
-        <Button
-          variant="contained"
-          className="bg-black text-white rounded-xl hover:bg-black hover:text-white"
+        <button
+          className="bg-white text-textandcta  border-textandcta  p-4 text-lg  rounded-full hover:bg-secondary hover:text-white hover:cursor-pointer"
           onClick={() => connectWallet()}
         >
           {" "}
           Connect Wallet
-        </Button>
+        </button>
       )}
     </div>
   );

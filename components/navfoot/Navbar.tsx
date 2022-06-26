@@ -8,18 +8,17 @@ export const NavBar = () => {
   // Wallet related
   // ---------------------------
   const { connect, disconnect, web3Provider } = useWalletAuth();
-
+  //navbar alignment still funky
   return (
-    <Container maxWidth="xl" className=" flex justify-between content-center ">
-      <img src="" alt="logo" width="180" height="80" />
+    <div className="flex justify-between bg-primary px-36  ">
+      <img src="logo.png" alt="logo" className="w-48 h-12 mt-8" />
       <div className="flex py-6">
-        REF WALLET HERE{" "}
         <ConnectWallet
           connectWallet={connect}
           disconnectWallet={disconnect}
           web3Provider={web3Provider}
         />{" "}
       </div>
-    </Container>
+    </div>
   );
 };
