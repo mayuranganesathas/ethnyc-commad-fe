@@ -3,6 +3,8 @@ import { NavBar } from "../components/navfoot/Navbar";
 import Box from "../components/ui/Box";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import { PlusCircleIcon } from "@heroicons/react/solid";
+import TableDataPools from "../components/ui/TableDataPools";
+import TableDataPoolsCommunity from "../components/ui/TableDataPoolsCommunity";
 
 export default function CommunityPage() {
   return (
@@ -38,7 +40,9 @@ export default function CommunityPage() {
             + New Pool
           </button>
         </div>
-        <div>Table</div>
+        <div className=" pl-64 w-10/12">
+          <TableDataPools />
+        </div>
       </div>
       <div className="flex justify-between py-4">
         {" "}
@@ -48,7 +52,9 @@ export default function CommunityPage() {
           Blacklist
         </div>
       </div>{" "}
-      <div>Table</div>
+      <div className=" pl-64 w-10/12">
+        <TableDataPoolsCommunity />
+      </div>
     </div>
   );
 }
