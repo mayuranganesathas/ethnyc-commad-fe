@@ -1,3 +1,4 @@
+import { useForm } from "react-hook-form";
 import React, { useState, useEffect } from "react";
 
 import { Button, Modal, Box, Typography, Container } from "@mui/material";
@@ -9,36 +10,49 @@ export interface CreatePoolProps {
   handleClose: any;
 }
 
-export const CreatePoolModal = ({ open, handleClose }: CreatePoolProps) => {
-  const bondAbi = abis.poolFactory;
+const defaultValues = {
+  name: "new Pool",
+  amount: 10,
+  desc: "a desc",
+  endDate: 1656245931,
+};
 
-  const submitLend = async () => {
+export const CreatePoolModal = ({ open, handleClose }: CreatePoolProps) => {
+  const { register, handleSubmit } = useForm({
+    defaultValues,
+  });
+  const poolAbi = abis.poolFactory;
+
+  const submitCreate = async (poolDetails: any) => {
+    console.log(poolDetails);
     try {
       const { ethereum } = window;
       if (ethereum) {
-        // Bonds have a decimal place of 6 so we need to covert. TODO Maybe fetch the decimal place in the future
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
 
         const poolContract = new ethers.Contract(
-          lendDetails.address,
-          bondAbi,
+          "0xd212e8ca6504A89Ff3268e4E68E8C9291FE92936",
+          poolAbi as any,
           signer
         );
 
-        const createBondTxn = await poolContract.purchaseBond(
-          convertedAmountLend,
+        const viralityOracleAddr = "0x9984A54eaf9a48E1E705E2278C2DCd6593DeE71A";
+        const createPoolTxn = await poolContract.createPool(
+          poolDetails.name,
+          poolDetails.amount,
+          viralityOracleAddr,
           {
             gasPrice: ethers.utils.parseUnits("100", "gwei"),
             gasLimit: 500000,
           }
         );
-        console.log("Mining...", createBondTxn.hash);
-        await createBondTxn.wait();
+        console.log("Mining...", createPoolTxn.hash);
+        await createPoolTxn.wait();
 
         console.log(
           "Mined -- Success ",
-          createBondTxn.hash + "Mined -- Success ERC20"
+          createPoolTxn.hash + "Mined -- Success ERC20"
         );
       } else {
         console.log("Ethereum object doesn't exist!");
@@ -47,6 +61,9 @@ export const CreatePoolModal = ({ open, handleClose }: CreatePoolProps) => {
       console.log(error);
     }
   };
+
+  const onSubmit = handleSubmit(submitCreate);
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -69,25 +86,29 @@ export const CreatePoolModal = ({ open, handleClose }: CreatePoolProps) => {
           style={style}
           className="bg-white rounded-xl shadow-lg p-8 justify-center flex-wrap"
         >
-          <div className="text-xl">Create New Pool</div>
-          <div>
-            Pool Name <input></input>
-          </div>
-          <div>Amount</div>
-          <input></input> ETH
-          <div>Pool Description</div>
-          <input className="w-50 h-50"></input>
-          <div>Pool End Date</div>
-          <input></input>
-          <div></div>
-          <Button
-            variant="contained"
-            color="primary"
-            className="w-40 flex-wrap"
-          >
-            {" "}
-            Create Pool
-          </Button>
+          <form onSubmit={onSubmit}>
+            <div className="text-xl">Create New Pool</div>
+            <div>
+              Pool Name
+              <input {...register("name")}></input>
+            </div>
+            <div>Amount</div>
+            <input {...register("amount")}></input> ETH
+            <div>Pool Description</div>
+            <input className="w-50 h-50" {...register("desc")}></input>
+            <div>Pool End Date</div>
+            <input {...register("endDate")}></input>
+            <div></div>
+            <Button
+              variant="contained"
+              color="primary"
+              className="w-40 flex-wrap"
+              type="submit"
+            >
+              {" "}
+              Create Pool
+            </Button>
+          </form>
         </Box>
       </Modal>
     </div>
