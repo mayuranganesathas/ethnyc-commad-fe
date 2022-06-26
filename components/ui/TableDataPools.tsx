@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Button } from "@material-ui/core";
 
-export interface DataTableProps {}
+export interface DataTableProps { }
 const propData = [
-  { id: 1, name: "Pool 1", dao: "DAO 1", maturityDate: "1" },
-  { id: 2, name: "Pool 2", dao: "DAO 2", maturityDate: "2" },
-  { id: 3, name: "Pool 3", dao: "DAO 3", maturityDate: "3" },
-  { id: 4, name: "Pool 4", dao: "DAO 4", maturityDate: "4" },
-  { id: 5, name: "Pool 5", dao: "DAO 5", maturityDate: "5" },
+  { id: 1, name: "Best Coven Lane", dao: "CovenDAO", maturityDate: "07/07/2022", addr: "0x7cE56.....V3596" },
+  { id: 2, name: "Avatar Boys", dao: "AvatarDAO", maturityDate: "21/8/2022", addr: "0x9fT76.....97Q78" },
+  { id: 3, name: "Alors", dao: "BaguetteDAO", maturityDate: "13/10/2022", addr: "0x1cA74.....V7683" },
+  { id: 4, name: "Strongest Spell", dao: "SpellDAO", maturityDate: "29/11/2022", addr: "0x35c56.....69Y42" },
+  { id: 5, name: "Love Potion", dao: "HealingDAO", maturityDate: "27/12/2022", addr: "0x7gt66.....85739" },
 ];
 
 export interface LendTableOutput {
@@ -19,7 +19,7 @@ export interface LendTableOutput {
   particpants: string;
 }
 
-const DataTable = ({}: DataTableProps) => {
+const DataTable = ({ }: DataTableProps) => {
   const [allBonds, setAllBonds] = useState<LendTableOutput[]>(propData);
   const [selectedBondId, setSelectedBondId] = useState(-1);
   const [modalOpen, setModalOpen] = useState(false);
@@ -31,11 +31,11 @@ const DataTable = ({}: DataTableProps) => {
   });
 
   const columnDefs: GridColDef[] = [
-    { field: "id", headerName: "Name", flex: 0 },
-    { field: "name", headerName: "Pool Address", flex: 1 },
+    { field: "id", headerName: "#", flex: 0 },
+    { field: "name", headerName: "Pool Name", flex: 1 },
     { field: "dao", headerName: "End Date", flex: 0 },
     { field: "maturityDate", headerName: "Bounty", flex: 0 },
-    { field: "addr", headerName: "Participants", flex: 1 },
+    { field: "addr", headerName: "Address", flex: 1 },
     {
       field: "Description",
       flex: 0.5,
