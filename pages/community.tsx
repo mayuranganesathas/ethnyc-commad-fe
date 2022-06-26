@@ -32,10 +32,10 @@ export default function CommunityPage() {
           </div>
         </div>
         <div className="flex justify-evenly">
-          <Box headingText="12K" subText="Impressions" />
-          <Box headingText="12K" subText="Impressions" />
-          <Box headingText="12K" subText="Impressions" />
-          <Box headingText="12K" subText="Impressions" />
+          <Box headingText="10,453" subText="Impressions" />
+          <Box headingText="59" subText="Shares" />
+          <Box headingText="125" subText="Comments" />
+          <Box headingText="12,371" subText="Impressions" />
         </div>
       </div>
       <div>
