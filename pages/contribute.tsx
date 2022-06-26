@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
+import SubmitPostModal from "../components/modals/SubmitPost";
 import { NavBar } from "../components/navfoot/Navbar";
 import PostBox from "../components/ui/PostBox";
 import RewardBox from "../components/ui/RewardBlock";
 import TableDataPoolsYourPosts from "../components/ui/TableDataPoolsYourPosts";
 
 export default function Contribute() {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleClose = () => {
+    setModalOpen(false);
+  };
   return (
     <div className="">
       {" "}
@@ -52,7 +58,10 @@ export default function Contribute() {
       <div className="flex justify-between py-4">
         {" "}
         <div className="text-2xl px-12 py-4">Your Posts</div>
-        <button className="bg-primary text-white rounded-xl  h-8 mt-6 mr-20 text-md">
+        <button
+          className="bg-primary text-white rounded-xl  h-8 mt-6 mr-20 text-md"
+          onClick={() => setModalOpen(true)}
+        >
           + Submit New Post
         </button>{" "}
       </div>
@@ -60,6 +69,7 @@ export default function Contribute() {
         {" "}
         <TableDataPoolsYourPosts />
       </div>
+      <SubmitPostModal open={modalOpen} handleClose={handleClose} />
     </div>
   );
 }

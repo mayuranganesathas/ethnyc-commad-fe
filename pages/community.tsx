@@ -5,8 +5,14 @@ import { ChevronDownIcon } from "@heroicons/react/outline";
 import { PlusCircleIcon } from "@heroicons/react/solid";
 import TableDataPools from "../components/ui/TableDataPools";
 import TableDataPoolsCommunity from "../components/ui/TableDataPoolsCommunity";
+import CreatePoolModal from "../components/modals/CreatePool";
 
 export default function CommunityPage() {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleClose = () => {
+    setModalOpen(false);
+  };
   return (
     <div>
       {" "}
@@ -36,7 +42,10 @@ export default function CommunityPage() {
         <div className="flex justify-between py-4">
           {" "}
           <div className="text-2xl px-12 py-4">Pools</div>
-          <button className="bg-primary text-white rounded-xl  h-8 mt-6 mr-20 text-md">
+          <button
+            className="bg-primary text-white rounded-xl  h-8 mt-6 mr-20 text-md"
+            onClick={() => setModalOpen(true)}
+          >
             + New Pool
           </button>
         </div>
@@ -55,6 +64,7 @@ export default function CommunityPage() {
       <div className=" pl-64 w-10/12">
         <TableDataPoolsCommunity />
       </div>
+      <CreatePoolModal open={modalOpen} handleClose={handleClose} />
     </div>
   );
 }
