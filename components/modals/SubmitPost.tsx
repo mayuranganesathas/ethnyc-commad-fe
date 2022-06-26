@@ -30,7 +30,20 @@ export const SubmitPostModal = ({ open, handleClose }: SubmitPostProps) => {
           style={style}
           className="bg-white rounded-xl shadow-lg p-8 justify-center"
         >
-          <div>Hello</div>
+          <div className="text-xl py-8">Create New Post</div>
+          <div>
+            Pool Address<input></input>
+          </div>
+          POST URL <input></input>
+          <div></div>
+          <Button
+            variant="contained"
+            color="primary"
+            className="w-40 flex-wrap py-4"
+          >
+            {" "}
+            Submit Post
+          </Button>{" "}
         </Box>
       </Modal>
     </div>
