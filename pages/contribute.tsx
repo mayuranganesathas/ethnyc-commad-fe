@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavBar } from "../components/navfoot/Navbar";
+import PostBox from "../components/ui/PostBox";
 import RewardBox from "../components/ui/RewardBlock";
 import TableDataPoolsYourPosts from "../components/ui/TableDataPoolsYourPosts";
 
@@ -25,6 +26,29 @@ export default function Contribute() {
         </div>
       </div>
       <div className="text-2xl px-12 py-4">Ongoing Pools</div>
+      <div className="flex justify-evenly">
+        <PostBox
+          headingText="TEST"
+          bodyText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil."
+          imgLink="./witch3.png"
+          name="Sahsa Bans"
+          date="2021 12 31"
+        />
+        <PostBox
+          headingText="TEST"
+          bodyText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil."
+          imgLink="./boredape.webp"
+          name="Sahsa Bans"
+          date="2021 12 31"
+        />
+        <PostBox
+          headingText="TEST"
+          bodyText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil."
+          imgLink="./witch2.png"
+          name="Sahsa Bans"
+          date="2021 12 31"
+        />
+      </div>
       <div className="flex justify-between py-4">
         {" "}
         <div className="text-2xl px-12 py-4">Your Posts</div>
